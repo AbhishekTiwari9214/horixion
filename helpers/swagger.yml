@@ -1,0 +1,370 @@
+openapi: 3.0.0
+info:
+  title: lms_external api
+  version: 1.0.0
+  description: API documentation
+servers:
+  servers:
+  - url: 
+tags:
+  - name: office_staff
+  - name: students
+paths:
+  /api/admin/uploadStudentData:
+    post:
+      tags:
+        - office_staff
+      summary: uploading the user data
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                excelfile:
+                  type: string
+                  format: binary
+                collegeId:
+                  type: integer
+                  example: '1'
+      parameters:
+        - name: emailId
+          in: query
+          schema:
+            type: string
+          example: abhishek.tiwari2@celebaltech.com
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/admin/addCelebalRoles:
+    post:
+      tags:
+        - office_staff
+      summary: add celebal roles
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                adminEmail: tarun.sharma@celebaltech.com
+                fullName: Tarun Sharma
+                role: hrbuddy
+                hrmid: 1232
+                collegeId: 1
+                domain: nodejs
+      parameters:
+        - name: emailId
+          in: query
+          schema:
+            type: string
+          example: abhishek.tiwari2@celebaltech.com
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/admin/uploadCourseExcel:
+    post:
+      tags:
+        - office_staff
+      summary: UploadCourseExcel
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                excelsheet:
+                  type: string
+                  format: binary
+                complexity:
+                  type: string
+                  example: intermidiate
+                sequence:
+                  type: integer
+                  example: '3'
+                learning_path:
+                  type: string
+                  example: nodejs
+                description:
+                  type: string
+                  example: this is the description for the nodejs
+      parameters:
+        - name: emailId
+          in: query
+          schema:
+            type: string
+          example: 'abhishek.tiwari2@celebaltech.com '
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/admin/addColleges:
+    post:
+      tags:
+        - office_staff
+      summary: add colleges
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                logo:
+                  type: string
+                  format: binary
+                MOU:
+                  type: string
+                  format: binary
+                collegeName:
+                  type: string
+                  example: arya college
+                TPO_name:
+                  type: string
+                  example: abhishek tiri
+                TPO_contactNo:
+                  type: integer
+                  example: '9339734'
+                TPO_emailId:
+                  type: string
+                  example: abhishek.sharma4@cleebalttech.com
+                address:
+                  type: string
+                  example: 'sljdfldoikmn sjdfhidjf lsdlfkjdofh '
+                startDate:
+                  type: string
+                  example: 10/11/2023
+                endDate:
+                  type: string
+                  example: 10/12/2023
+      parameters:
+        - name: emailId
+          in: query
+          schema:
+            type: string
+          example: abhishek.tiwari2@celebaltech.com
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/admin/getColleges:
+    get:
+      tags:
+        - office_staff
+      summary: getColleges
+      parameters:
+        - name: emailId
+          in: query
+          schema:
+            type: string
+          example: abhishek.tiwari2@celebaltech.com
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/admin/getCourseList:
+    get:
+      tags:
+        - office_staff
+      summary: get course list
+      parameters:
+        - name: emailId
+          in: query
+          schema:
+            type: string
+          example: abhishek.tiwari2@celebaltech.com
+        - name: lp_name
+          in: query
+          schema:
+            type: string
+          example: nodejs
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/admin/addLp:
+    post:
+      tags:
+        - office_staff
+      summary: add_lp
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                lp_name: nodejs
+                department: app development
+                technology: backend development
+      parameters:
+        - name: emailId
+          in: query
+          schema:
+            type: string
+          example: abhishek.tiwari2@celebaltech.com
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/admin/getLp:
+    get:
+      tags:
+        - office_staff
+      summary: get lp
+      parameters:
+        - name: emailId
+          in: query
+          schema:
+            type: string
+          example: abhishek.tiwari2@celebaltech.com
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/admin/getCollegeMentors:
+    get:
+      tags:
+        - office_staff
+      summary: get college roles
+      parameters:
+        - name: emailId
+          in: query
+          schema:
+            type: string
+          example: abhishek.tiwari2@celebaltech.com
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/admin/getCelebalRoles:
+    get:
+      tags:
+        - office_staff
+      summary: get celebal roles
+      parameters:
+        - name: emailId
+          in: query
+          schema:
+            type: string
+          example: abhishek.tiwari2@celebaltech.com
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/admin/addCollegeMentor:
+    post:
+      tags:
+        - office_staff
+      summary: add the college mentor
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                fullName: abhishek tiwari
+                collegeName: arya college
+                role: mentor
+                mentorEmailId: abhishektiwari9214@gmail.com
+                domain: nodejs
+      parameters:
+        - name: emailId
+          in: query
+          schema:
+            type: string
+          example: abhishek.tiwari2@celebaltech.com
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/admin/deleteRoles:
+    post:
+      tags:
+        - office_staff
+      summary: delete roles
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                roleId: 1
+                isCelebal: false
+      parameters:
+        - name: emailId
+          in: query
+          schema:
+            type: string
+          example: abhishek.tiwari2@celebaltech.com
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/admin/getStudentList:
+    get:
+      tags:
+        - office_staff
+      summary: GET STUDENTS
+      parameters:
+        - name: emailId
+          in: query
+          schema:
+            type: string
+          example: abhishek.tiwari2@celebaltech.com
+        - name: collegeId
+          in: query
+          schema:
+            type: integer
+          example: '1'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/student/getCourseDetail:
+    get:
+      tags:
+        - students
+      summary: get course
+      parameters:
+        - name: emailId
+          in: query
+          schema:
+            type: string
+          example: abhishek.tiwari2@celebaltech.com
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/user/communityChat:
+    get:
+      tags:
+        - General
+      summary: get chats
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: emailId
+          in: query
+          schema:
+            type: string
+          example: abhishek.tiwari@celebaltech.com
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
