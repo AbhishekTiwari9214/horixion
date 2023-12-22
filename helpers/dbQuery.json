@@ -1,0 +1,39 @@
+{
+    "communityChat":{
+        "checkTheUser":"select * from college.students where emailId=%L"
+    },
+    "collegeAdmin":{
+        "checkTheUploader":"select string_agg(e.emailId,',') as studentEmails , e.id from college.students e where e.collegeId=(select collegeId from users.staff where emailId= %L) group by e.collegeId ",
+        "insertStudentData":"insert into college.students(name,emailId,courseId,collegeId) values"
+    },
+    "officeAdmin":{
+        "checkMentor":"select * from college.mentors where emailId= %L",
+        "addCollegeMentor":"insert into college.mentors(fullName, collegeId,emailId, domain, role, added_by)values(%L,%L,%L,%L,%L,%L)",
+        "insertStudentData":"insert into college.students(studentName,EmailId, contactNo, btech_stream,current_sem,domain,class10,class12,collegeId,added_by) values",
+        "deleteRole":{
+            "Celebal":"delete office.staff where id = %L",
+            "College":"delete college.mentors where id = %L"
+            },        
+        "checkTheUploader":"select * from office.staff where emailId= %L",
+        "checkTheUploads":"select string_agg(emailId,',') as studentEmails from college.students  where collegeId=%L ",
+        "addAdmin":"insert into office.staff (emailId,role,HRMId,domain,collegeId,addedBy,fullName)values(%L,%L,%L,%L,%L,%L,%L)",
+        "addColleges":"insert into colleges( collegeName,address,startDate,endDate,logo,TPO_name,TPO_contact_no,TPO_emailId,MOU_url)VALUES(%L,%L,%L,%L,%L,%L,%L,%L,%L)",
+        "get_lp_list_underColleges":"select p.lp_name,p.domain,p.technology,p.last_modified_by, p.last_modified_on,count(cs.studentName) totalStudents,(count(d.sequence)/count(cs.studentName))as course_number, string_agg(FORMAT(COALESCE(cs.startDate, c.startDate), 'dd/MM/yyyy'),',') as startDate,string_agg(FORMAT (COALESCE(cs.endDate, c.endDate), 'dd/MM/yyyy'),',') as endDate,sum( cs.running_state) as runningState, (sum(d.course_duration_week)/count(cs.studentName))  path_duration from courses.learning_path  p  left join courses.detail d on p.lp_name= d.lp_name left join college.students cs on cs.domain =p.domain left join colleges c on cs.collegeId=c.id   where c.id= %L group by p.lp_name,p.domain,p.technology,p.last_modified_by, p.last_modified_on, p.added_by,c.startDate,c.endDate",
+        "allCollegeNames":"select STRING_AGG(collegeName,',')as collegesName ,STRING_AGG(TPO_emailId,',') as collegesTPO from colleges",
+        "getColleges":"select c.id,c.collegeName,c.logo,c.address,FORMAT(c.startDate, 'dd/MM/yyyy')as startDate,FORMAT(c.endDate, 'dd/MM/yyyy')as endDate, count(e.emailId) as studentCount, count(distinct e.domain) as totalDomain from colleges c left join college.students e on e.collegeId= c.id group by   c.collegeName, c.address, c.startDate, c.endDate,c.id,c.logo",
+        "getCelebalRoles":"select s.id, s.role,s.HRMId,s.fullName, s.emailId,FORMAT(s.added_on, 'dd/MM/yyyy') as added_on, s1.fullName as added_by from office.staff s left join office.staff s1 on s.addedBy=s1.emailId",
+        "getCollegeRoles":"[dbo].[collegeRoles] @collegeName=%L,@domain =%L",
+        "addCourses":"insert into courses.detail (complexity, lp_name,course_excel_name, added_by, course_duration_week, course_duration_time, sequence,description)values(%L, %L, %L, %L, %L, %L, %L,%L)",
+        "getCoursesList":"select * from courses.detail where lp_name = %L",
+        "checkCouse":"select * from courses.detail where coruse_code=%L",
+        "checkLp":"select * from courses.learning_path where lp_name=%L",
+        "add_lp":"insert into courses.learning_path(lp_name, domain,technology,added_by)values(%L, %L, %L,%L)",
+        "playPauseLp":"UPDATE college.students SET running_state = %L,startDate =%L, endDate = %L WHERE domain = (select domain from courses.learning_path where lp_name=%L)  AND collegeId = %L;",
+        "getStudentList":"select s.id,s.studentName,s.EmailId, s.contactNo, s.btech_stream, s.current_sem, s.domain, s.class10,s.class12,s.added_by, s.attendence from college.students s left join colleges c on s.collegeId= c.id where c.collegeName like %L",
+         "get_lp_list":"select p.lp_name,p.domain,p.technology,p.last_modified_by, p.last_modified_on,  s.fullName as added_by,count(d.sequence)as course_number  , sum(d.course_duration_week) path_duration from courses.learning_path  p left join courses.detail d on p.lp_name= d.lp_name left join office.staff s on p.added_by = s.emailId  where p.domain = %L group by p.lp_name,p.domain,p.technology,p.last_modified_by, p.last_modified_on, p.added_by,s.fullName "
+    },
+    "playPauselp":{
+        "UpdateAllLpStart":"UPDATE college.students SET running_state = 1 - running_state WHERE CONVERT(VARCHAR, startDate, 103) = %L",
+        "UpdateAllLpStop":"UPDATE college.students SET running_state = 1 - running_state WHERE CONVERT(VARCHAR, endDate, 103) = %L"
+    }
+}            

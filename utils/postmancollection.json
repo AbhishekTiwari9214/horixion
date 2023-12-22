@@ -1,0 +1,573 @@
+{
+	"info": {
+		"_postman_id": "8130b3d9-1291-4355-b3d4-42d60af53149",
+		"name": "lms external",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "20988784"
+	},
+	"item": [
+		{
+			"name": "office_staff",
+			"item": [
+				{
+					"name": "uploading the user data",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "excelfile",
+									"type": "file",
+									"src": "/C:/Users/AbhishekTiwari/Downloads/Untitled spreadsheet (1).xlsx"
+								},
+								{
+									"key": "collegeId",
+									"value": "1",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "localhost:8002/api/admin/uploadStudentData?emailId=abhishek.tiwari2@celebaltech.com",
+							"host": [
+								"localhost"
+							],
+							"port": "8002",
+							"path": [
+								"api",
+								"admin",
+								"uploadStudentData"
+							],
+							"query": [
+								{
+									"key": "emailId",
+									"value": "abhishek.tiwari2@celebaltech.com"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "add celebal roles",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"adminEmail\":\"tarun.sharma@celebaltech.com\",\r\n    \"fullName\":\"Tarun Sharma\",\r\n    \"role\":\"hrbuddy\",\r\n    \"hrmid\":1232,\r\n    \"collegeId\":1,\r\n    \"domain\":\"nodejs\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8002/api/admin/addCelebalRoles?emailId=abhishek.tiwari2@celebaltech.com",
+							"host": [
+								"localhost"
+							],
+							"port": "8002",
+							"path": [
+								"api",
+								"admin",
+								"addCelebalRoles"
+							],
+							"query": [
+								{
+									"key": "emailId",
+									"value": "abhishek.tiwari2@celebaltech.com"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "UploadCourseExcel",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "excelsheet",
+									"type": "file",
+									"src": "/C:/Users/AbhishekTiwari/Downloads/Format of External Course Curriculum (1).xlsx"
+								},
+								{
+									"key": "complexity",
+									"value": "intermidiate",
+									"type": "text"
+								},
+								{
+									"key": "sequence",
+									"value": "3",
+									"type": "text"
+								},
+								{
+									"key": "learning_path",
+									"value": "nodejs",
+									"type": "text"
+								},
+								{
+									"key": "description",
+									"value": "this is the description for the nodejs",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "localhost:8002/api/admin/uploadCourseExcel?emailId=abhishek.tiwari2@celebaltech.com ",
+							"host": [
+								"localhost"
+							],
+							"port": "8002",
+							"path": [
+								"api",
+								"admin",
+								"uploadCourseExcel"
+							],
+							"query": [
+								{
+									"key": "emailId",
+									"value": "abhishek.tiwari2@celebaltech.com "
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "add colleges",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "logo",
+									"type": "file",
+									"src": "/C:/Users/AbhishekTiwari/Downloads/fc111b3be850516997163bf80155eb6a.jpg"
+								},
+								{
+									"key": "MOU",
+									"type": "file",
+									"src": "/C:/Users/AbhishekTiwari/Downloads/aadharcard.pdf"
+								},
+								{
+									"key": "collegeName",
+									"value": "arya college",
+									"type": "text"
+								},
+								{
+									"key": "TPO_name",
+									"value": "abhishek tiri",
+									"type": "text"
+								},
+								{
+									"key": "TPO_contactNo",
+									"value": "9339734",
+									"type": "text"
+								},
+								{
+									"key": "TPO_emailId",
+									"value": "abhishek.sharma4@cleebalttech.com",
+									"type": "text"
+								},
+								{
+									"key": "address",
+									"value": "sljdfldoikmn sjdfhidjf lsdlfkjdofh ",
+									"type": "text"
+								},
+								{
+									"key": "startDate",
+									"value": "10/11/2023",
+									"type": "text"
+								},
+								{
+									"key": "endDate",
+									"value": "10/12/2023",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "localhost:8002/api/admin/addColleges?emailId=abhishek.tiwari2@celebaltech.com",
+							"host": [
+								"localhost"
+							],
+							"port": "8002",
+							"path": [
+								"api",
+								"admin",
+								"addColleges"
+							],
+							"query": [
+								{
+									"key": "emailId",
+									"value": "abhishek.tiwari2@celebaltech.com"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getColleges",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "localhost:8002/api/admin/getColleges?emailId=abhishek.tiwari2@celebaltech.com",
+							"host": [
+								"localhost"
+							],
+							"port": "8002",
+							"path": [
+								"api",
+								"admin",
+								"getColleges"
+							],
+							"query": [
+								{
+									"key": "emailId",
+									"value": "abhishek.tiwari2@celebaltech.com"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get course list",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "localhost:8002/api/admin/getCourseList?emailId=abhishek.tiwari2@celebaltech.com&lp_name=nodejs",
+							"host": [
+								"localhost"
+							],
+							"port": "8002",
+							"path": [
+								"api",
+								"admin",
+								"getCourseList"
+							],
+							"query": [
+								{
+									"key": "emailId",
+									"value": "abhishek.tiwari2@celebaltech.com"
+								},
+								{
+									"key": "lp_name",
+									"value": "nodejs"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "add_lp",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"lp_name\":\"nodejs\",\r\n    \"department\":\"app development\",\r\n    \"technology\":\"backend development\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8002/api/admin/addLp?emailId=abhishek.tiwari2@celebaltech.com",
+							"host": [
+								"localhost"
+							],
+							"port": "8002",
+							"path": [
+								"api",
+								"admin",
+								"addLp"
+							],
+							"query": [
+								{
+									"key": "emailId",
+									"value": "abhishek.tiwari2@celebaltech.com"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get lp",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8002/api/admin/getLp?emailId=abhishek.tiwari2@celebaltech.com",
+							"host": [
+								"localhost"
+							],
+							"port": "8002",
+							"path": [
+								"api",
+								"admin",
+								"getLp"
+							],
+							"query": [
+								{
+									"key": "emailId",
+									"value": "abhishek.tiwari2@celebaltech.com"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get college roles",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8002/api/admin/getCollegeMentors?emailId=abhishek.tiwari2@celebaltech.com",
+							"host": [
+								"localhost"
+							],
+							"port": "8002",
+							"path": [
+								"api",
+								"admin",
+								"getCollegeMentors"
+							],
+							"query": [
+								{
+									"key": "emailId",
+									"value": "abhishek.tiwari2@celebaltech.com"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get celebal roles",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8002/api/admin/getCelebalRoles?emailId=abhishek.tiwari2@celebaltech.com",
+							"host": [
+								"localhost"
+							],
+							"port": "8002",
+							"path": [
+								"api",
+								"admin",
+								"getCelebalRoles"
+							],
+							"query": [
+								{
+									"key": "emailId",
+									"value": "abhishek.tiwari2@celebaltech.com"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "add the college mentor",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"fullName\": \"abhishek tiwari\",\r\n    \"collegeName\": \"arya college\",\r\n    \"role\": \"mentor\",\r\n    \"mentorEmailId\": \"abhishektiwari9214@gmail.com\",\r\n    \"domain\": \"nodejs\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8002/api/admin/addCollegeMentor?emailId=abhishek.tiwari2@celebaltech.com",
+							"host": [
+								"localhost"
+							],
+							"port": "8002",
+							"path": [
+								"api",
+								"admin",
+								"addCollegeMentor"
+							],
+							"query": [
+								{
+									"key": "emailId",
+									"value": "abhishek.tiwari2@celebaltech.com"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete roles",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"roleId\":1,\r\n    \"isCelebal\":false\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8002/api/admin/deleteRoles?emailId=abhishek.tiwari2@celebaltech.com",
+							"host": [
+								"localhost"
+							],
+							"port": "8002",
+							"path": [
+								"api",
+								"admin",
+								"deleteRoles"
+							],
+							"query": [
+								{
+									"key": "emailId",
+									"value": "abhishek.tiwari2@celebaltech.com"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GET STUDENTS",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8002/api/admin/getStudentList?emailId=abhishek.tiwari2@celebaltech.com&collegeId=1",
+							"host": [
+								"localhost"
+							],
+							"port": "8002",
+							"path": [
+								"api",
+								"admin",
+								"getStudentList"
+							],
+							"query": [
+								{
+									"key": "emailId",
+									"value": "abhishek.tiwari2@celebaltech.com"
+								},
+								{
+									"key": "collegeId",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "students",
+			"item": [
+				{
+					"name": "get course",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8002/api/student/getCourseDetail?emailId=abhishek.tiwari2@celebaltech.com",
+							"host": [
+								"localhost"
+							],
+							"port": "8002",
+							"path": [
+								"api",
+								"student",
+								"getCourseDetail"
+							],
+							"query": [
+								{
+									"key": "emailId",
+									"value": "abhishek.tiwari2@celebaltech.com"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "get chats",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "ya29.a0AfB_byDj3q5Q9mpCOmYAfpXNO5QCyGoLJF4e5HZU53Ih26WCTcmRz65kBqMRV2y6dk0Z16KNk4TlTlO23NvCwGrg7BcCHzN33Soz4eRSmq8S0W18Mdk87RpheUZjU8M4T6juxtP07QQrju2DNO5Uj5IR8dM8dOe7KfF5aCgYKAUQSARISFQGOcNnCOUL3o6YiBP7aiAtjWlMPmg0171",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8002/api/user/communityChat?emailId=abhishek.tiwari@celebaltech.com",
+					"host": [
+						"localhost"
+					],
+					"port": "8002",
+					"path": [
+						"api",
+						"user",
+						"communityChat"
+					],
+					"query": [
+						{
+							"key": "emailId",
+							"value": "abhishek.tiwari@celebaltech.com"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

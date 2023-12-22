@@ -1,16 +1,28 @@
 const express= require('express')
 const app=express()
 const mongoose= require('mongoose')
+require('dotenv').config({path:'./config.env'})
+const {users,admin}= require('./routes/index')
+
+
 const bodyParser = require("body-parser")
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.json())
-app.listen(9000,()=>{
-    console.log('server has started')
-})
-mongoose.connect('mongodb+srv://ecomapi:Abhi9214@cluster0.0mbwxs0.mongodb.net/?retryWrites=true&w=majority',()=>{
-    console.log('database has been connected')
-})
+app.use('/api',users)
+app.use('/api',admin)
 
+app.get('/',(req,res)=>{
+res.json({message:'hello from the server',
+status:'OK'
+}).status(200)
+})
+mongoose.connect(process.env.MONGO_CONNECTION_STRING,()=>{
+    app.listen(process.env.PORT || 8002,()=>{
+        console.log('server has started at :' + process.env.PORT || 8002)
+     }) 
+}).catch(e=>{
+    console.log(e.message);
+})
 
 
 
