@@ -14,7 +14,6 @@ const getUsers = async (emailId) => {
                     })
                     return;
                 }
-            
                 if (user) {
                     resolve({
                         message:user,

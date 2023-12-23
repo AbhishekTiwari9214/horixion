@@ -5,15 +5,14 @@ const addOrders = async (req, res) => {
     try {
     
         const emailId= req.body.emailId
+        const productId= req.body.productId
+const quantity= req.body.quantity
 
-        await addOrdersLogic(emailId).then(data => {
-            
-
+        await addOrdersLogic(emailId, productId, quantity).then(data => {
             let successresponse = successResponse(data.message, statusCode[data.status].statusCode)
             res.status(successresponse.statusCode).json(successresponse.body)
         }).catch(e => {
-
-            let failureresponse = failureResponse(e.status, e.message, statusCode[e.status])
+             let failureresponse = failureResponse(e.status, e.message, statusCode[e.status])
             res.status(failureresponse.statusCode.statusCode).json(failureresponse.body)
         })
     } catch (error) {        

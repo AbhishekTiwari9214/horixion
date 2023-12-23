@@ -3,7 +3,9 @@ const app=express()
 const mongoose= require('mongoose')
 require('dotenv').config({path:'./config.env'})
 const {users,admin}= require('./routes/index')
+const fileupload= require('express-fileupload')
 
+app.use(fileupload())
 
 const bodyParser = require("body-parser")
 app.use(bodyParser.urlencoded({ extended: true }));
